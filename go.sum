@@ -1,0 +1,8 @@
+github.com/OntoLedgy/storage_interop_services v0.0.0-20211227224953-a276eeb0b814 h1:Y4sGxhTkm2sWcn++d/R/2tQGv6FfPumSjss7l5KuFrA=
+github.com/OntoLedgy/storage_interop_services v0.0.0-20211227224953-a276eeb0b814/go.mod h1:Yb1Wh6i29MwzznQ0LRn7tMqxQSlk08rSayAaof8J2WE=
+github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
+github.com/myesui/uuid v1.0.0 h1:xCBmH4l5KuvLYc5L7AS7SZg9/jKdIFubM7OVoLqaQUI=
+github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
+gopkg.in/myesui/uuid.v1 v1.0.0 h1:9y1k4tTQvYr0GliMtqWdBxMEX3X86gow12Uj6GIyBiE=
+gopkg.in/myesui/uuid.v1 v1.0.0/go.mod h1:OHnLC+jZGuFVkJVF3gLeL7pqB+S6rx0NlvgLqclsWc4=
+gopkg.in/stretchr/testify.v1 v1.2.2 h1:yhQC6Uy5CqibAIlk1wlusa/MJ3iAN49/BsR/dCCKz3M=
