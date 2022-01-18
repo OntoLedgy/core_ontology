@@ -8,11 +8,9 @@ type BnogElements struct {
 
 func (element *BnogElements) New(
 	uuid *utils.UUIDs,
-	owning_repository_uuid *utils.UUIDs,
-	presentation_name string) {
+	owning_repository_uuid *utils.UUIDs) {
 
-	//element.BnogObjects.New()
-	//element.add_to_registry_keyed_on_ckid_type(
-	//	BoroObjectCkIds.Elements)
+	element.Object_uuid = uuid
+	element.Owning_repository_uuid = owning_repository_uuid
 
 }
