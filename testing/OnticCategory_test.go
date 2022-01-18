@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-func TestOnticCategoriesObjects(t *testing.T) {
+func TestOnticCategories_Objects(t *testing.T) {
 
 	test_object_factory := &factories.BnogObjectFactories{}
 
@@ -30,7 +30,7 @@ func TestOnticCategoriesObjects(t *testing.T) {
 
 }
 
-func TestOnticCategoriesNames(t *testing.T) {
+func TestOnticCategories_Names(t *testing.T) {
 
 	test_name_factory := &factories.BnogNameFactories{}
 
@@ -51,5 +51,31 @@ func TestOnticCategoriesNames(t *testing.T) {
 		test_name.Get_object_uuid().UUID.String(),
 		test_name.Owning_repository_uuid,
 		test_name.Registry_keyed_on_uuid)
+
+}
+
+func TestOnticCategories_PlaceableTypes(t *testing.T) {
+
+	test_placeable_type_factory := &factories.BnogPlaceableTypeFactories{}
+
+	object_uuid, _ := utils.GetUUID(1, "")
+	repository_uuid, _ := utils.GetUUID(1, "")
+
+	//TODO - Create two types, and add to placeable type dictionary.
+
+	test_placeable_type := test_placeable_type_factory.Create(
+		object_uuid,
+		nil,
+		repository_uuid,
+		"test_placeable_type")
+
+	fmt.Printf("BnogObjects name: %s \n"+
+		"uuid:%s \n"+
+		"owning repository uuid:%s \n"+
+		"registry keyed on uuids: %s ",
+		test_placeable_type.Uml_name,
+		test_placeable_type.Get_object_uuid().UUID.String(),
+		test_placeable_type.Owning_repository_uuid,
+		test_placeable_type.Registry_keyed_on_uuid)
 
 }
