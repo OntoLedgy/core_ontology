@@ -1,16 +1,18 @@
 package objects
 
-import "github.com/OntoLedgy/storage_interop_services/code/services/databases/utils"
+import (
+	"github.com/OntoLedgy/ol_common_services/code/services/identity_management_services"
+)
 
 type BnogElements struct {
 	BnogObjects
 }
 
-func (element *BnogElements) New(
-	uuid *utils.UUIDs,
-	owning_repository_uuid *utils.UUIDs) {
+func (bnogElement *BnogElements) New(
+	uuid *identity_management_services.UUIDs,
+	owningRepositoryUuid *identity_management_services.UUIDs) {
 
-	element.Object_uuid = uuid
-	element.Owning_repository_uuid = owning_repository_uuid
+	bnogElement.ObjectUuid = uuid
+	bnogElement.OwningRepositoryUuid = owningRepositoryUuid
 
 }

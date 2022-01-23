@@ -2,16 +2,13 @@ package testing
 
 import (
 	"fmt"
-
-	"github.com/OntoLedgy/core_ontology/code/core/construction_operations"
+	sets "github.com/OntoLedgy/storage_interop_services/code/services/in_memory/sets"
 	"testing"
 )
 
 func TestSetOperations(t *testing.T) {
 
-	//set_index := new(string)
-
-	test_set := make(construction_operations.Sets[string])
+	test_set := make(sets.Sets[string])
 
 	test_set.Add("tesdt")
 

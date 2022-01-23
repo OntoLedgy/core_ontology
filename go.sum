@@ -1,5 +1,7 @@
-github.com/OntoLedgy/storage_interop_services v0.0.10 h1:ZRwpfgtW2B1oePuPmFQW2RPTKIcwQHfj3i4tS3DL3U4=
-github.com/OntoLedgy/storage_interop_services v0.0.10/go.mod h1:HVrJcErBg914B3k7IzJab/dTC61rb8Em48EczkU2QM0=
+github.com/OntoLedgy/ol_common_services v0.0.0-20220122215125-65bc807988cd h1:n9Y4Ac0cQDqKQDlx/eYrXT89ZMniB/I3VNWf1IrdE6Q=
+github.com/OntoLedgy/ol_common_services v0.0.0-20220122215125-65bc807988cd/go.mod h1:6P3PpnMPr3ibqD6SQgc5aCPob8varAYFUjZ/xzwc85w=
+github.com/OntoLedgy/storage_interop_services v0.0.17 h1:eOpqYZP7vTALzWmGzsnVErAE6WmDcXGaMI22WzC+5Sw=
+github.com/OntoLedgy/storage_interop_services v0.0.17/go.mod h1:MPWmQj8537jwM6T9JdYPLG5TZ/dWmjkglciyjqetgZw=
 github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
 github.com/kr/pretty v0.1.0/go.mod h1:dAy3ld7l9f0ibDNOQOHHMYYIIbhfbHSm3C4ZsoJORNo=
 github.com/kr/pretty v0.3.0 h1:WgNl7dwNpEZ6jJ9k1snq4pZsg7DOEN8hP9Xw0Tsjwk0=

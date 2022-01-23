@@ -1,32 +1,33 @@
 package objects
 
-import "github.com/OntoLedgy/storage_interop_services/code/services/databases/utils"
+import (
+	utils "github.com/OntoLedgy/ol_common_services/code/services/identity_management_services"
+)
 
 type BnogRepresentations struct {
 	BnogTypes
-	exemplar_representation string
+	exemplarRepresentation string
 }
 
-func (representation *BnogRepresentations) New(
+func (bnogRepresentation *BnogRepresentations) New(
 	uuid *utils.UUIDs,
-	owning_repository_uuid *utils.UUIDs,
-	exemplar_representation string,
-	presentation_name string) {
+	owningRepositoryUuid *utils.UUIDs,
+	exemplarRepresentation string,
+	presentationName string) {
 
-	if uuid == nil {
-		representation.Set_object_uuid()
-	} else {
-		representation.Object_uuid = uuid
-	}
+	bnogRepresentation.BnogTypes.New(
+		uuid,
+		owningRepositoryUuid,
+		presentationName)
 
-	representation.Owning_repository_uuid = owning_repository_uuid
+	bnogRepresentation.RegistryKeyedOnUuid =
+		make(
+			map[*utils.UUIDs]*BnogObjects)
 
-	representation.Registry_keyed_on_uuid = make(map[*utils.UUIDs]interface{})
+	bnogRepresentation.RegistryKeyedOnUuid[uuid] =
+		&bnogRepresentation.BnogObjects
 
-	representation.Registry_keyed_on_uuid[uuid] = representation
-
-	representation.Uml_name = presentation_name
-
-	representation.exemplar_representation = exemplar_representation
+	bnogRepresentation.exemplarRepresentation =
+		exemplarRepresentation
 
 }

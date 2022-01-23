@@ -2,36 +2,38 @@ package objects
 
 import (
 	"github.com/OntoLedgy/core_ontology/code/ckids"
-	"github.com/OntoLedgy/storage_interop_services/code/services/databases/utils"
+	"github.com/OntoLedgy/core_ontology/code/core/object_model/objects/places"
+	utils "github.com/OntoLedgy/ol_common_services/code/services/identity_management_services"
 )
 
 type BnogPlaceableTypes struct {
 	BnogTypes
-	placeable_type_placed_types_map map[*BnogPlaceableTypes]interface{}
+	PlaceableTypePlacedTypesMap *places.BnogPlacedObjectsMaps
 }
 
-func (placeableType *BnogPlaceableTypes) New(
+func (
+	bnogPlaceableType *BnogPlaceableTypes) New(
 	uuid *utils.UUIDs,
-	placeable_type_placed_types_map map[*BnogPlaceableTypes]interface{},
-	owning_repository_uuid *utils.UUIDs,
-	presentation_name string) {
+	placeableTypePlacedTypesMap *places.BnogPlacedObjectsMaps,
+	owningRepositoryUuid *utils.UUIDs,
+	presentationName string) {
 
-	if uuid == nil {
-		placeableType.Set_object_uuid()
-	} else {
-		placeableType.Object_uuid = uuid
-	}
+	bnogPlaceableType.BnogTypes.New(
+		uuid,
+		owningRepositoryUuid,
+		presentationName)
 
-	placeableType.Owning_repository_uuid = owning_repository_uuid
+	bnogPlaceableType.RegistryKeyedOnCkidType =
+		make(
+			map[ckids.BoroObjectCkIds]*BnogObjects)
 
-	placeableType.Registry_keyed_on_ckid_type = make(map[BoroObjectCkIds]interface{})
+	bnogPlaceableType.RegistryKeyedOnCkidType[ckids.PlaceableTypes] =
+		&bnogPlaceableType.BnogObjects
 
-	placeableType.Registry_keyed_on_ckid_type[ckids.PlaceableTypes] = placeableType
+	bnogPlaceableType.PlaceableTypePlacedTypesMap =
+		&places.BnogPlacedObjectsMaps{}
 
-	placeableType.placeable_type_placed_types_map = make(map[*BnogPlaceableTypes]interface{})
-
-	placeableType.placeable_type_placed_types_map = placeable_type_placed_types_map
-
-	placeableType.Uml_name = presentation_name
+	bnogPlaceableType.PlaceableTypePlacedTypesMap =
+		placeableTypePlacedTypesMap
 
 }

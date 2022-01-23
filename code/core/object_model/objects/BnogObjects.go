@@ -1,86 +1,94 @@
 package objects
 
 import (
-	"github.com/OntoLedgy/core_ontology/code/core/construction_operations"
-	"github.com/OntoLedgy/storage_interop_services/code/services/databases/utils"
+	"github.com/OntoLedgy/core_ontology/code/ckids"
+	"github.com/OntoLedgy/ol_common_services/code/services/identity_management_services"
+	"github.com/OntoLedgy/storage_interop_services/code/services/in_memory/sets"
 )
 
-type BoroObjectCkIds int
-
 type BnogObjects struct {
-	Object_uuid *utils.UUIDs
+	ObjectUuid *identity_management_services.UUIDs
 
-	Registry_keyed_on_uuid map[*utils.UUIDs]interface{}
+	RegistryKeyedOnUuid map[*identity_management_services.UUIDs]*BnogObjects
 
-	Registry_keyed_on_ckid_type map[BoroObjectCkIds]interface{}
+	RegistryKeyedOnCkidType map[ckids.BoroObjectCkIds]*BnogObjects
 
-	Matched_objects []*utils.UUIDs
+	MatchedObjects []*identity_management_services.UUIDs
 
-	Owning_repository_uuid *utils.UUIDs
+	OwningRepositoryUuid *identity_management_services.UUIDs
 
-	Is_named_bys *construction_operations.Sets[string]
+	IsNamedBys *sets.Sets[*BnogObjects]
 
-	Names construction_operations.Sets[string]
+	Names sets.Sets[*BnogObjects]
 
-	Types construction_operations.Sets[string]
+	Types sets.Sets[*BnogObjects]
 
-	Instances construction_operations.Sets[string]
+	Instances sets.Sets[*BnogObjects]
 
-	Supertypes construction_operations.Sets[string]
+	Supertypes sets.Sets[*BnogObjects]
 
-	Uml_name string
+	UmlName string
 
-	Naming_spaces construction_operations.Sets[string]
+	NamingSpaces sets.Sets[*BnogObjects]
 }
 
-func (object *BnogObjects) New(
-	uuid *utils.UUIDs,
-	owning_repository_uuid *utils.UUIDs,
-	presentation_name string) {
+func (
+	bnogObject *BnogObjects) New(
+	uuid *identity_management_services.UUIDs,
+	owningRepositoryUuid *identity_management_services.UUIDs,
+	presentationName string) {
 
 	if uuid == nil {
-		object.Set_object_uuid()
+		bnogObject.SetObjectUuid()
 	} else {
-		object.Object_uuid = uuid
+		bnogObject.ObjectUuid = uuid
 	}
 
-	object.Owning_repository_uuid = owning_repository_uuid
+	bnogObject.OwningRepositoryUuid = owningRepositoryUuid
 
-	object.Registry_keyed_on_uuid = make(map[*utils.UUIDs]interface{})
+	bnogObject.RegistryKeyedOnUuid = make(map[*identity_management_services.UUIDs]*BnogObjects)
 
-	object.Registry_keyed_on_uuid[uuid] = object
+	bnogObject.RegistryKeyedOnUuid[uuid] = bnogObject
 
-	object.Uml_name = presentation_name
+	bnogObject.RegistryKeyedOnCkidType = make(map[ckids.BoroObjectCkIds]*BnogObjects)
 
-}
+	bnogObject.RegistryKeyedOnCkidType[ckids.Objects] = bnogObject
 
-func (object *BnogObjects) Set_object_uuid() *utils.UUIDs {
-
-	object.Object_uuid, _ = utils.GetUUID(1, "")
-
-	return object.Object_uuid
-}
-
-func (object *BnogObjects) Get_object_uuid() *utils.UUIDs {
-
-	return object.Object_uuid
+	bnogObject.UmlName = presentationName
 
 }
 
-func (object *BnogObjects) add_to_registry_keyed_on_ckid_type(
-	boro_object_ck_id BoroObjectCkIds) {
+func (
+	bnogObject *BnogObjects) SetObjectUuid() *identity_management_services.UUIDs {
 
-	var ckid_typed_objects interface{}
+	bnogObject.ObjectUuid, _ = identity_management_services.GetUUID(1, "")
 
-	if val, ok := object.Registry_keyed_on_ckid_type[boro_object_ck_id]; ok {
+	return bnogObject.ObjectUuid
+}
+
+func (
+	bnogObject *BnogObjects) GetObjectUuid() *identity_management_services.UUIDs {
+
+	return bnogObject.ObjectUuid
+
+}
+
+func (
+	bnogObject *BnogObjects) addToRegistryKeyedOnCkidType(
+	boroObjectCkId ckids.BoroObjectCkIds) {
+
+	var ckid_typed_objects *BnogObjects
+
+	if val, ok := bnogObject.RegistryKeyedOnCkidType[boroObjectCkId]; ok {
 
 		ckid_typed_objects = val
 
 	} else {
 
-		ckid_typed_objects = construction_operations.New[string]()
+		ckid_typed_objects = &BnogObjects{}
 
-		object.Registry_keyed_on_ckid_type[boro_object_ck_id] = &ckid_typed_objects
+		bnogObject.RegistryKeyedOnCkidType[boroObjectCkId] =
+			ckid_typed_objects
 
 	}
 

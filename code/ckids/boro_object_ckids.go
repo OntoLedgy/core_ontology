@@ -95,9 +95,9 @@ const (
 
 )
 
-func get_immutable_tuple_infrastructure_subtype_ck_ids() []BoroObjectCkIds {
+func getImmutableTupleInfrastructureSubtypeCkIds() []BoroObjectCkIds {
 
-	immutable_tuple_infrastructure_subtype_ck_ids := []BoroObjectCkIds{
+	immutableTupleInfrastructureSubtypeCkIds := []BoroObjectCkIds{
 		Tuples,
 		SuperSubTypes,
 		WholesParts,
@@ -107,12 +107,13 @@ func get_immutable_tuple_infrastructure_subtype_ck_ids() []BoroObjectCkIds {
 		RepresentedBy,
 	}
 
-	return immutable_tuple_infrastructure_subtype_ck_ids
+	return immutableTupleInfrastructureSubtypeCkIds
 
 }
-func get_composition_couple_types_ck_ids() []BoroObjectCkIds {
 
-	composition_couple_types_ck_ids := []BoroObjectCkIds{
+func getCompositionCoupleTypesCkIds() []BoroObjectCkIds {
+
+	compositionCoupleTypesCkIds := []BoroObjectCkIds{
 
 		SuperSubTypes,
 		WholesParts,
@@ -120,10 +121,10 @@ func get_composition_couple_types_ck_ids() []BoroObjectCkIds {
 		PowerTypesInstances,
 	}
 
-	return composition_couple_types_ck_ids
+	return compositionCoupleTypesCkIds
 }
 
-func is_immutable_tuple_infrastructure_subtype_reflexive(boroObjectCkId BoroObjectCkIds) bool {
+func isImmutableTupleInfrastructureSubtypeReflexive(boroObjectCkId BoroObjectCkIds) bool {
 
 	if boroObjectCkId == SuperSubTypes {
 		return true

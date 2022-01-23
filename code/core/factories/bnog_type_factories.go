@@ -2,13 +2,13 @@ package factories
 
 import (
 	"github.com/OntoLedgy/core_ontology/code/core/object_model/objects"
-	"github.com/OntoLedgy/storage_interop_services/code/services/databases/utils"
+	utils "github.com/OntoLedgy/ol_common_services/code/services/identity_management_services"
 )
 
-type BnopTypeFactories struct {
+type BnogTypeFactories struct {
 }
 
-func (BnopTypeFactories) Create(
+func (BnogTypeFactories) Create(
 	uuid *utils.UUIDs,
 	owning_repository_uuids *utils.UUIDs,
 	presentation_name string) *objects.BnogTypes {

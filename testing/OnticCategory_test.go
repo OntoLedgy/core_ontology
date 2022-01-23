@@ -2,80 +2,87 @@ package testing
 
 import (
 	"fmt"
+	"github.com/OntoLedgy/core_ontology/code/bnog_io"
 	"github.com/OntoLedgy/core_ontology/code/core/factories"
-	"github.com/OntoLedgy/storage_interop_services/code/services/databases/utils"
+	uuids "github.com/OntoLedgy/ol_common_services/code/services/identity_management_services"
 	"testing"
 )
 
 func TestOnticCategories_Objects(t *testing.T) {
 
-	test_object_factory := &factories.BnogObjectFactories{}
+	testObjectFactory := &factories.BnogObjectFactories{}
 
-	object_uuid, _ := utils.GetUUID(1, "")
-	repository_uuid, _ := utils.GetUUID(1, "")
+	objectUuid, _ := uuids.GetUUID(1, "")
+	repositoryUuid, _ := uuids.GetUUID(1, "")
 
-	test_object := test_object_factory.Create(
-		object_uuid,
-		repository_uuid,
+	testObject := testObjectFactory.Create(
+		objectUuid,
+		repositoryUuid,
 		"test")
 
 	fmt.Printf("BnogObjects name: %s \n"+
 		"uuid:%s \n"+
 		"owning repository uuid:%s \n"+
 		"registry keyed on uuids: %s ",
-		test_object.Uml_name,
-		test_object.Get_object_uuid().UUID.String(),
-		test_object.Owning_repository_uuid,
-		test_object.Registry_keyed_on_uuid)
+		testObject.UmlName,
+		testObject.GetObjectUuid().UUID.String(),
+		testObject.OwningRepositoryUuid,
+		testObject.RegistryKeyedOnUuid[objectUuid].ObjectUuid.String())
 
+	bnog_io.WriteBnog(
+		"./testing.gob",
+		testObject)
+
+	bnog_io.ReadBnog(
+		"./testing.gob")
 }
 
 func TestOnticCategories_Names(t *testing.T) {
 
-	test_name_factory := &factories.BnogNameFactories{}
+	testNameFactory := &factories.BnogNameFactories{}
 
-	object_uuid, _ := utils.GetUUID(1, "")
-	repository_uuid, _ := utils.GetUUID(1, "")
+	objectUuid, _ := uuids.GetUUID(1, "")
+	repositoryUuid, _ := uuids.GetUUID(1, "")
 
-	test_name := test_name_factory.Create(
-		object_uuid,
+	testName := testNameFactory.Create(
+		objectUuid,
 		"name",
-		repository_uuid,
+		repositoryUuid,
 		"test_name")
 
 	fmt.Printf("BnogObjects name: %s \n"+
 		"uuid:%s \n"+
 		"owning repository uuid:%s \n"+
 		"registry keyed on uuids: %s ",
-		test_name.Uml_name,
-		test_name.Get_object_uuid().UUID.String(),
-		test_name.Owning_repository_uuid,
-		test_name.Registry_keyed_on_uuid)
+		testName.UmlName,
+		testName.GetObjectUuid().UUID.String(),
+		testName.OwningRepositoryUuid,
+		testName.RegistryKeyedOnUuid[objectUuid].ObjectUuid.UUID.String())
 
 }
 
 func TestOnticCategories_PlaceableTypes(t *testing.T) {
 
-	test_placeable_type_factory := &factories.BnogPlaceableTypeFactories{}
+	testPlaceableTypeFactory := &factories.BnogPlaceableTypeFactories{}
 
-	object_uuid, _ := utils.GetUUID(1, "")
-	repository_uuid, _ := utils.GetUUID(1, "")
+	objectUuid, _ := uuids.GetUUID(1, "")
+	repositoryUuid, _ := uuids.GetUUID(1, "")
 
 	//TODO - Create two types, and add to placeable type dictionary.
 
-	test_placeable_type := test_placeable_type_factory.Create(
-		object_uuid,
+	testPlaceableType := testPlaceableTypeFactory.Create(
+		objectUuid,
 		nil,
-		repository_uuid,
+		repositoryUuid,
 		"test_placeable_type")
 
 	fmt.Printf("BnogObjects name: %s \n"+
 		"uuid:%s \n"+
 		"owning repository uuid:%s \n"+
 		"registry keyed on uuids: %s ",
-		test_placeable_type.Uml_name,
-		test_placeable_type.Get_object_uuid().UUID.String(),
-		test_placeable_type.Owning_repository_uuid,
-		test_placeable_type.Registry_keyed_on_uuid)
+		testPlaceableType.UmlName,
+		testPlaceableType.GetObjectUuid().UUID.String(),
+		testPlaceableType.OwningRepositoryUuid,
+		testPlaceableType.RegistryKeyedOnUuid[objectUuid].ObjectUuid.UUID)
 
 }
