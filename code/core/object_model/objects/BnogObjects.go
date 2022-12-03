@@ -2,20 +2,20 @@ package objects
 
 import (
 	"github.com/OntoLedgy/core_ontology/code/ckids"
-	"github.com/OntoLedgy/ol_common_services/code/services/identity_management_services"
+	"github.com/OntoLedgy/ol_common_services/code/services/identification_services/uuid_service"
 	"github.com/OntoLedgy/storage_interop_services/code/services/in_memory/sets"
 )
 
 type BnogObjects struct {
-	ObjectUuid *identity_management_services.UUIDs
+	ObjectUuid *uuid_service.UUIDs
 
-	RegistryKeyedOnUuid map[*identity_management_services.UUIDs]*BnogObjects
+	RegistryKeyedOnUuid map[*uuid_service.UUIDs]*BnogObjects
 
 	RegistryKeyedOnCkidType map[ckids.BoroObjectCkIds]*BnogObjects
 
-	MatchedObjects []*identity_management_services.UUIDs
+	MatchedObjects []*uuid_service.UUIDs
 
-	OwningRepositoryUuid *identity_management_services.UUIDs
+	OwningRepositoryUuid *uuid_service.UUIDs
 
 	IsNamedBys *sets.Sets[*BnogObjects]
 
@@ -34,8 +34,8 @@ type BnogObjects struct {
 
 func (
 	bnogObject *BnogObjects) New(
-	uuid *identity_management_services.UUIDs,
-	owningRepositoryUuid *identity_management_services.UUIDs,
+	uuid *uuid_service.UUIDs,
+	owningRepositoryUuid *uuid_service.UUIDs,
 	presentationName string) {
 
 	if uuid == nil {
@@ -46,7 +46,7 @@ func (
 
 	bnogObject.OwningRepositoryUuid = owningRepositoryUuid
 
-	bnogObject.RegistryKeyedOnUuid = make(map[*identity_management_services.UUIDs]*BnogObjects)
+	bnogObject.RegistryKeyedOnUuid = make(map[*uuid_service.UUIDs]*BnogObjects)
 
 	bnogObject.RegistryKeyedOnUuid[uuid] = bnogObject
 
@@ -59,15 +59,15 @@ func (
 }
 
 func (
-	bnogObject *BnogObjects) SetObjectUuid() *identity_management_services.UUIDs {
+	bnogObject *BnogObjects) SetObjectUuid() *uuid_service.UUIDs {
 
-	bnogObject.ObjectUuid, _ = identity_management_services.GetUUID(1, "")
+	bnogObject.ObjectUuid, _ = uuid_service.GetUUID(1, "")
 
 	return bnogObject.ObjectUuid
 }
 
 func (
-	bnogObject *BnogObjects) GetObjectUuid() *identity_management_services.UUIDs {
+	bnogObject *BnogObjects) GetObjectUuid() *uuid_service.UUIDs {
 
 	return bnogObject.ObjectUuid
 

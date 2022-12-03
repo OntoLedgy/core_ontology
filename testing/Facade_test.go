@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/OntoLedgy/core_ontology/code/core"
 	"github.com/OntoLedgy/core_ontology/code/core/factories"
-	utils "github.com/OntoLedgy/ol_common_services/code/services/identity_management_services"
+	utils "github.com/OntoLedgy/ol_common_services/code/services/identification_services/uuid_service"
 	"testing"
 )
 

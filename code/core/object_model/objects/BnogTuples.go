@@ -3,7 +3,7 @@ package objects
 import (
 	"github.com/OntoLedgy/core_ontology/code/ckids"
 	"github.com/OntoLedgy/core_ontology/code/core/object_model/objects/places"
-	"github.com/OntoLedgy/ol_common_services/code/services/identity_management_services"
+	"github.com/OntoLedgy/ol_common_services/code/services/identification_services/uuid_service"
 )
 
 type BnogTuples struct {
@@ -13,10 +13,10 @@ type BnogTuples struct {
 }
 
 func (bnogTuple *BnogTuples) New(
-	uuid *identity_management_services.UUIDs,
+	uuid *uuid_service.UUIDs,
 	tuplePlacedObjectsDictionary *places.BnogPlacedObjectsMaps,
 	immutableMinorCompositionCoupleTypeBoroObjectCkid ckids.BoroObjectCkIds,
-	owningRepositoryUuid *identity_management_services.UUIDs) {
+	owningRepositoryUuid *uuid_service.UUIDs) {
 
 	bnogTuple.BnogObjects.New(
 		uuid,

@@ -1,7 +1,7 @@
 package objects
 
 import (
-	utils "github.com/OntoLedgy/ol_common_services/code/services/identity_management_services"
+	utils "github.com/OntoLedgy/ol_common_services/code/services/identification_services/uuid_service"
 )
 
 type BnogRepresentations struct {
