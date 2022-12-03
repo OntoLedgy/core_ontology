@@ -3,7 +3,7 @@ package objects
 import (
 	"github.com/OntoLedgy/core_ontology/code/ckids"
 	"github.com/OntoLedgy/core_ontology/code/core/object_model/objects/places"
-	utils "github.com/OntoLedgy/ol_common_services/code/services/identification_services/uuid_service"
+	uuids "github.com/OntoLedgy/ol_common_services/code/services/identification_services/uuid_service"
 )
 
 type BnogPlaceableTypes struct {
@@ -13,9 +13,9 @@ type BnogPlaceableTypes struct {
 
 func (
 	bnogPlaceableType *BnogPlaceableTypes) New(
-	uuid *utils.UUIDs,
+	uuid *uuids.UUIDs,
 	placeableTypePlacedTypesMap *places.BnogPlacedObjectsMaps,
-	owningRepositoryUuid *utils.UUIDs,
+	owningRepositoryUuid *uuids.UUIDs,
 	presentationName string) {
 
 	bnogPlaceableType.BnogTypes.New(
